@@ -1,0 +1,41 @@
+{% extends "notes/base.html" %}
+
+{% block content %}
+<form method="post" class="card">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <button type="submit">Add note</button>
+</form>
+
+{% if courses %}
+<p class="filters">
+    Course:
+    <a href="{% url 'notes:list' %}" {% if not course %}class="active"{% endif %}>All</a>
+    {% for code in courses %}
+        <a href="?course={{ code }}" {% if code == course %}class="active"{% endif %}>{{ code }}</a>
+    {% endfor %}
+</p>
+{% endif %}
+
+{% for note in notes %}
+    <article class="card{% if note.done %} done{% endif %}">
+        <h2><span class="course">{{ note.course }}</span> {{ note.title }}</h2>
+        {% if note.body %}<p>{{ note.body|linebreaksbr }}</p>{% endif %}
+        <footer>
+            <time datetime="{{ note.created|date:'c' }}">{{ note.created|date:"j M Y, g:i a" }}</time>
+            <span class="actions">
+                <form method="post" action="{% url 'notes:toggle' note.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="link">{% if note.done %}Mark as to-do{% else %}Mark as revised{% endif %}</button>
+                </form>
+                <form method="post" action="{% url 'notes:delete' note.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="link danger">Delete</button>
+                </form>
+            </span>
+        </footer>
+    </article>
+{% empty %}
+    <p class="empty">No notes yet. Add one above, or in the <a href="{% url 'admin:notes_note_add' %}">admin</a>.</p>
+{% endfor %}
+{% endblock %}

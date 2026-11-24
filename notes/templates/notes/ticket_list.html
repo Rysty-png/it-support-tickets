@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>IT-заявки</title>
+</head>
+<body>
+    <h1>Система регистрации IT-заявок</h1>
+
+    <a href="{% url 'ticket_create' %}">Создать заявку</a>
+
+    <hr>
+
+    {% for ticket in tickets %}
+        <h3>{{ ticket.title }}</h3>
+        <p>{{ ticket.description }}</p>
+        <p>Приоритет: {{ ticket.priority }}</p>
+        <p>Статус: {{ ticket.status }}</p>
+        <hr>
+    {% empty %}
+        <p>Пока заявок нет.</p>
+    {% endfor %}
+</body>
+</html>

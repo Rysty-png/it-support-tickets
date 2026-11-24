@@ -1,0 +1,69 @@
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font: 16px/1.5 system-ui, sans-serif;
+    color: #1d2433;
+    background: #f5f7fb;
+}
+
+header, main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    padding-top: 24px;
+}
+
+header h1 { margin: 0; font-size: 28px; }
+header h1 a { color: inherit; text-decoration: none; }
+nav { color: #5b6476; }
+a { color: #0c66e4; }
+
+.card {
+    background: #fff;
+    border: 1px solid #e2e6ee;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 12px 0;
+}
+
+form.card { display: grid; gap: 10px; }
+form.card div { display: grid; gap: 4px; }
+label { font-weight: 600; }
+input, textarea { font: inherit; padding: 8px 10px; border: 1px solid #c7cedb; border-radius: 6px; width: 100%; }
+.helptext { color: #7a8396; font-size: 13px; }
+.errorlist { color: #b42318; margin: 0; padding-left: 18px; }
+
+button {
+    font: inherit;
+    padding: 8px 14px;
+    border: 0;
+    border-radius: 6px;
+    background: #0c66e4;
+    color: #fff;
+    cursor: pointer;
+    justify-self: start;
+}
+
+button.link { background: none; color: #0c66e4; padding: 0; }
+button.danger { color: #b42318; }
+
+article h2 { margin: 0 0 4px; font-size: 18px; }
+article p { margin: 0 0 8px; }
+article footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; color: #7a8396; font-size: 14px; }
+article.done h2 { color: #7a8396; text-decoration: line-through; }
+.actions { display: flex; gap: 12px; }
+.course { font-size: 13px; font-weight: 600; background: #e9f0fd; color: #0c66e4; padding: 2px 8px; border-radius: 999px; vertical-align: 2px; }
+.filters a { margin-right: 8px; text-decoration: none; }
+.filters a.active { font-weight: 700; text-decoration: underline; }
+.flash { padding: 10px 14px; border-radius: 6px; background: #e6f6ec; color: #17663a; }
+.flash.info { background: #eef2f8; color: #3a4558; }
+.empty { color: #7a8396; }
